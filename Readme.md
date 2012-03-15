@@ -28,3 +28,7 @@ old version of the application.
 That way I can migrate portions of the existing application piece by piece and
 register routes for those bits which have been migrated. If the URL is
 unhandled then it seamlessly gets passed to a backend server.
+
+# TODO
+
+Add a way to mangle the request url or other request options
