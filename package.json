@@ -1,0 +1,17 @@
+{
+  "author": "Dan VerWeire <dverweire@gmail.com> (http://dan.verweire.com)",
+  "name": "connect-proxy",
+  "description": "Simple Connect Middleware which proxies a request to a backend",
+  "version": "0.0.0",
+  "homepage": "https://github.com/wankdanker/connect-proxy",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wankdanker/connect-proxy.git"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
