@@ -1,22 +1,29 @@
-var http = require('http');
+var http = require('http')
+	, https = require('https')
+	;
 
-module.exports = function (host, port) {
+module.exports = function (host, port, secure) {
 	host = host || "localhost";
-	port = port || 80;
+	secure = secure || false;
+	port = port || (secure) ? 443 : 80;
+
+	var libhttp = (secure) ? https : http;
 
 	return function (request, response, next) {
+		next = next || function () {};
 		request.headers.host = host;
 
 		request.headers['x-forwarded-for'] = (request.headers['x-forwarded-for']) 
 			? request.headers['x-forwarded-for'] + ', ' + request.socket.remoteAddress
-			: request.socket.remoteAddress;
+			: request.socket.remoteAddress
+			;
 
-		var proxy_request = http.request({ 
-			port : 		port, 
-			host :		host, 
-			method : 	request.method, 
-			path :		request.url, 
-			headers : 	request.headers
+		var proxy_request = libhttp.request({ 
+			port : 	    port
+			, host :    host
+			, method :  request.method
+			, path :    request.url
+			, headers : request.headers
 		}, function (proxy_response) {
 			response.writeHead(proxy_response.statusCode, proxy_response.headers);
 			
