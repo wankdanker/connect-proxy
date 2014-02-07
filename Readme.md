@@ -4,7 +4,7 @@ Proxy a request to another server
 
 # Usage
 
-	proxy(host, port);
+	proxy(host, port, secure);
 
 # Example
 
