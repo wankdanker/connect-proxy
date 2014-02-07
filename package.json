@@ -13,5 +13,13 @@
   "optionalDependencies": {},
   "engines": {
     "node": "*"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/wankdanker/connect-proxy/issues"
+  },
+  "main": "proxy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT"
 }
