@@ -13,13 +13,14 @@ module.exports = function (options) {
 		};
 	}
 
+	host = options.host || host || "localhost";
 	secure = options.secure || secure || false;
 	port = options.port
 		|| port
 		|| host.split(':')[1]
 		|| (secure) ? 443 : 80;
 
-	host = (options.host || host || "localhost").split(':')[0];
+	host = host.split(':')[0];
 	hostname = options.hostname || null;
 
 	var libhttp = (secure) ? https : http;
