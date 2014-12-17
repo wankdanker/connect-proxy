@@ -10,30 +10,32 @@ proxy(host, port, secure);
 or
 
 ```js
-	proxy({
-		host : 'server.com'
-		, port : 8080
-		, secure : false
-		, hostname : 'host.server.com'
-	});
+proxy({
+	host : 'server.com'
+	, port : 8080
+	, secure : false
+	, hostname : 'host.server.com'
+});
 ```
 or
 
 ```js
-	proxy('server.com:8888')
+proxy('server.com:8888')
 ```
 
 # Example
 
-	var connect = require('connect')
-		, proxy = require('connect-proxy')
-		, app = connect.createServer();
-	
-	app.use('/images', proxy('internal-image-cluster.mysite.com'));
-	app.use('/thumbs', proxy('internal-thumb-generator.mysite.com'));
-	app.use('/legacy', proxy('some-old-iis-app.mysite.com', 8080));
+```js
+var connect = require('connect')
+	, proxy = require('connect-proxy')
+	, app = connect.createServer();
 
-	app.listen(3000);
+app.use('/images', proxy('internal-image-cluster.mysite.com'));
+app.use('/thumbs', proxy('internal-thumb-generator.mysite.com'));
+app.use('/legacy', proxy('some-old-iis-app.mysite.com', 8080));
+
+app.listen(3000);
+```
 
 # My Use Case
 
