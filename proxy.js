@@ -13,12 +13,11 @@ module.exports = function (options) {
 		};
 	}
 
-	host = options.host || host || "localhost";
-	secure = options.secure || secure || false;
+	host = options.host || "localhost";
+	secure = options.secure || false;
 	port = options.port
-		|| port
 		|| host.split(':')[1]
-		|| (secure) ? 443 : 80;
+		|| ((secure) ? 443 : 80);
 
 	host = host.split(':')[0];
 	hostname = options.hostname || null;
