@@ -2,16 +2,27 @@ var http = require('http')
 	, https = require('https')
 	;
 
-module.exports = function (host, port, secure) {
-	host = host || "localhost";
-	secure = secure || false;
-	port = port || (secure) ? 443 : 80;
+module.exports = function (options) {
+	var host, secure, port, hostname;
+
+	if (typeof options === 'string') {
+		options = {
+			host : arguments[0]
+			, port : arguments[1]
+			, secure : arguments[2]
+		};
+	}
+
+	host = options.host || host || "localhost";
+	secure = options.secure || secure || false;
+	port = options.port || port || (secure) ? 443 : 80;
+	hostname = options.hostname || null;
 
 	var libhttp = (secure) ? https : http;
 
 	return function (request, response, next) {
 		next = next || function () {};
-		request.headers.host = host;
+		request.headers.host = hostname || host;
 
 		request.headers['x-forwarded-for'] = (request.headers['x-forwarded-for']) 
 			? request.headers['x-forwarded-for'] + ', ' + request.socket.remoteAddress
