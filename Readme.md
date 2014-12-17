@@ -6,6 +6,19 @@ Proxy a request to another server
 
 	proxy(host, port, secure);
 
+or
+
+	proxy({
+		host : 'server.com'
+		, port : 8080
+		, secure : false
+		, hostname : 'host.server.com'
+	});
+
+or
+	proxy('server.com:8888')
+
+
 # Example
 
 	var connect = require('connect')
