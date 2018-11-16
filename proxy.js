@@ -43,7 +43,7 @@ module.exports = function (options) {
 			response.writeHead(proxy_response.statusCode, proxy_response.headers);
 			
 			proxy_response.on('error', function (e) {
-				next();
+				next(e);
 			});
 
 			proxy_response.on('data', function (chunk) {
@@ -56,11 +56,11 @@ module.exports = function (options) {
 		});
 
 		proxy_request.on('error', function (e) {
-			next();
+			next(e);
 		});
 
 		request.on('error', function (e) {
-			next();
+			next(e);
 		});
 
 		request.on('data', function (chunk) {
